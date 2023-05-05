@@ -1,0 +1,56 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">意见反馈</view>
+</cu-custom>
+<i-message id="message" />
+<view class='bg-white padding-xl radius shadow-lg'>
+  <view class='text-content'>
+    <view>如果你有任何意见或建议，都可以通过以下输入框反馈~</view>
+  </view>
+  <form>
+    <!-- <view class="cu-form-group margin-top feedback">
+      <view class="title">联系方式</view>
+      <input maxlength="50" bindinput="contactInput" placeholder="请输入微信或者手机号" value="{{contact}}"></input>
+    </view> -->
+    <view class="cu-form-group margin-top feedback">
+      <view class="title">意见反馈</view>
+      <textarea maxlength="500" bindinput="feedbaclInput" placeholder="如果你有任何意见或建议，都可以通过以下输入框反馈~" class="feedback-content" value="{{feedback}}"></textarea>
+    </view>
+  </form>
+  <view class="align-center margin-top-xl">
+    <view class="margin-tb-sm text-center">
+      <button class="cu-btn round bg-gradual-blue shadow" bindtap="submit">提交反馈</button>
+    </view>
+  </view>
+</view>
+
+<view class="margin-top-sm cu-card dynamic no-card">
+  <view class="cu-item shadow">
+    <view class="cu-list menu-avatar comment solids-top">
+      <view class="feedback-title">
+        <text class="text-xl text-bold">📔 反馈记录 </text>
+        <view class="cu-tag round bg-cyan sm">Limit：10条</view>
+      </view>
+      <view class="cu-item" wx:for="{{records}}" wx:for-item="record" wx:key="index">
+        <view class="cu-avatar round" style="{{'background-image:url('+ (record.role=='user'? (userInfo.avatarUrl?userInfo.avatarUrl:(userInfo.gender=='2'?'https://www.antsclimb.com/profile/avatar/static/UserWoMan.png':'https://www.antsclimb.com/profile/avatar/static/UserMan.png')): 'https://www.antsclimb.com/profile/avatar/static/systemHeader.png') +')'}}"></view>
+        <view class="content">
+          <view class="text-grey text-df">{{record.role == 'user'? userInfo.nickName:'问答AI小助手管理员'}}</view>
+          <view class="text-content text-df" style="color: rgb(100, 100, 100);">
+            <text class="text-bold">{{record.role == 'user'?'问':'答'}}：</text>{{record.feedback}}
+          </view>
+          <view class="margin-top-sm flex justify-between">
+            <view class="text-gray text-df">{{record.createTime}}</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="padding-xs flex align-center" wx:if="isDone">
+        <view class="flex-sub text-center">
+          <view class="text-xs padding-sm">
+            <text class="text-gray">加载完毕</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

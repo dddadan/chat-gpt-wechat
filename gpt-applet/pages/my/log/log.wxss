@@ -1,0 +1,4 @@
+/* pages/my/log/log.wxss */
+page {
+  background-color: white;
+}

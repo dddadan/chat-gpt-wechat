@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ants.search.mapper.AntsExamMapper">
+    
+    <resultMap type="AntsExam" id="AntsExamResult">
+        <result property="examId"    column="exam_id"    />
+        <result property="examTitle"    column="exam_title"    />
+        <result property="examTitleContent"    column="exam_title_content"    />
+        <result property="examContentType"    column="exam_content_type"    />
+        <result property="examType"    column="exam_type"    />
+        <result property="examIndex"    column="exam_index"    />
+        <result property="examAnalysis"    column="exam_analysis"    />
+        <result property="examErrorRate"    column="exam_error_rate"    />
+        <result property="remark"    column="remark"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectAntsExamVo">
+        select exam_id, exam_title, exam_title_content, exam_content_type, exam_type, exam_index, exam_analysis, exam_error_rate, remark, create_by, create_time, update_by, update_time from ants_exam
+    </sql>
+
+    <select id="selectAntsExamList" parameterType="AntsExam" resultMap="AntsExamResult">
+        <include refid="selectAntsExamVo"/>
+        <where>  
+            <if test="examTitle != null  and examTitle != ''"> and exam_title like concat('%', #{examTitle}, '%')</if>
+            <if test="examContentType != null "> and exam_content_type = #{examContentType}</if>
+            <if test="examType != null "> and exam_type = #{examType}</if>
+        </where>
+    </select>
+    
+    <select id="selectAntsExamById" parameterType="Long" resultMap="AntsExamResult">
+        <include refid="selectAntsExamVo"/>
+        where exam_id = #{examId}
+    </select>
+        
+    <insert id="insertAntsExam" parameterType="AntsExam" useGeneratedKeys="true" keyProperty="examId">
+        insert into ants_exam
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="examTitle != null">exam_title,</if>
+            <if test="examTitleContent != null">exam_title_content,</if>
+            <if test="examContentType != null">exam_content_type,</if>
+            <if test="examType != null">exam_type,</if>
+            <if test="examIndex != null">exam_index,</if>
+            <if test="examAnalysis != null">exam_analysis,</if>
+            <if test="examErrorRate != null">exam_error_rate,</if>
+            <if test="remark != null">remark,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="examTitle != null">#{examTitle},</if>
+            <if test="examTitleContent != null">#{examTitleContent},</if>
+            <if test="examContentType != null">#{examContentType},</if>
+            <if test="examType != null">#{examType},</if>
+            <if test="examIndex != null">#{examIndex},</if>
+            <if test="examAnalysis != null">#{examAnalysis},</if>
+            <if test="examErrorRate != null">#{examErrorRate},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAntsExam" parameterType="AntsExam">
+        update ants_exam
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="examTitle != null">exam_title = #{examTitle},</if>
+            <if test="examTitleContent != null">exam_title_content = #{examTitleContent},</if>
+            <if test="examContentType != null">exam_content_type = #{examContentType},</if>
+            <if test="examType != null">exam_type = #{examType},</if>
+            <if test="examIndex != null">exam_index = #{examIndex},</if>
+            <if test="examAnalysis != null">exam_analysis = #{examAnalysis},</if>
+            <if test="examErrorRate != null">exam_error_rate = #{examErrorRate},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where exam_id = #{examId}
+    </update>
+
+    <delete id="deleteAntsExamById" parameterType="Long">
+        delete from ants_exam where exam_id = #{examId}
+    </delete>
+
+    <delete id="deleteAntsExamByIds" parameterType="String">
+        delete from ants_exam where exam_id in 
+        <foreach item="examId" collection="array" open="(" separator="," close=")">
+            #{examId}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,43 @@
+page {}
+
+.foot {
+  height: 110rpx;
+  line-height: 110rpx;
+}
+
+.solid-bottom {
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.movable-area{
+  pointer-events:none;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 140rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  float:right;
+}
+
+.movable-view{ 
+  pointer-events:auto;
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+}
+
+.share-text {
+  font-size: 22rpx;
+  text-align: center;
+  margin-top: -15rpx;
+  color: #6e6e6e;
+}
+
+.space {
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+}

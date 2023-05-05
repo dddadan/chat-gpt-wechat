@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "i-spin": "../../components/spin/index",
+    "i-message": "../../components/message/index",
+    "i-share": "../../components/share/share"
+  },
+  "backgroundTextStyle": "dark",
+  "backgroundColor": "#f3f3f3"
+}

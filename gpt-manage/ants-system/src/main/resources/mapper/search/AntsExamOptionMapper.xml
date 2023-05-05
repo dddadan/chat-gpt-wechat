@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ants.search.mapper.AntsExamOptionMapper">
+    
+    <resultMap type="AntsExamOption" id="AntsExamOptionResult">
+        <result property="optionId"    column="option_id"    />
+        <result property="examId"    column="exam_id"    />
+        <result property="optionTitle"    column="option_title"    />
+        <result property="optionTitleContent"    column="option_title_content"    />
+        <result property="optionIndex"    column="option_index"    />
+        <result property="optionContentType"    column="option_content_type"    />
+        <result property="optionIsCorrect"    column="option_is_correct"    />
+        <result property="remark"    column="remark"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectAntsExamOptionVo">
+        select option_id, exam_id, option_title, option_title_content, option_index, option_content_type, option_is_correct, remark, create_by, create_time, update_by, update_time from ants_exam_option
+    </sql>
+
+    <select id="selectAntsExamOptionList" parameterType="AntsExamOption" resultMap="AntsExamOptionResult">
+        <include refid="selectAntsExamOptionVo"/>
+        <where>
+            <if test="examId != null "> and exam_id = #{examId}</if>
+            <if test="optionTitle != null  and optionTitle != ''"> and option_title like concat('%', #{optionTitle}, '%')</if>
+            <if test="optionContentType != null "> and option_content_type = #{optionContentType}</if>
+            <if test="optionIsCorrect != null "> and option_is_correct = #{optionIsCorrect}</if>
+        </where>
+    </select>
+    
+    <select id="selectAntsExamOptionById" parameterType="Long" resultMap="AntsExamOptionResult">
+        <include refid="selectAntsExamOptionVo"/>
+        where option_id = #{optionId}
+    </select>
+        
+    <insert id="insertAntsExamOption" parameterType="AntsExamOption" useGeneratedKeys="true" keyProperty="optionId">
+        insert into ants_exam_option
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="examId != null">exam_id,</if>
+            <if test="optionTitle != null">option_title,</if>
+            <if test="optionTitleContent != null">option_title_content,</if>
+            <if test="optionIndex != null">option_index,</if>
+            <if test="optionContentType != null">option_content_type,</if>
+            <if test="optionIsCorrect != null">option_is_correct,</if>
+            <if test="remark != null">remark,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="examId != null">#{examId},</if>
+            <if test="optionTitle != null">#{optionTitle},</if>
+            <if test="optionTitleContent != null">#{optionTitleContent},</if>
+            <if test="optionIndex != null">#{optionIndex},</if>
+            <if test="optionContentType != null">#{optionContentType},</if>
+            <if test="optionIsCorrect != null">#{optionIsCorrect},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAntsExamOption" parameterType="AntsExamOption">
+        update ants_exam_option
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="examId != null">exam_id = #{examId},</if>
+            <if test="optionTitle != null">option_title = #{optionTitle},</if>
+            <if test="optionTitleContent != null">option_title_content = #{optionTitleContent},</if>
+            <if test="optionIndex != null">option_index = #{optionIndex},</if>
+            <if test="optionContentType != null">option_content_type = #{optionContentType},</if>
+            <if test="optionIsCorrect != null">option_is_correct = #{optionIsCorrect},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where option_id = #{optionId}
+    </update>
+
+    <delete id="deleteAntsExamOptionById" parameterType="Long">
+        delete from ants_exam_option where option_id = #{optionId}
+    </delete>
+
+    <delete id="deleteAntsExamOptionByIds" parameterType="String">
+        delete from ants_exam_option where option_id in 
+        <foreach item="optionId" collection="array" open="(" separator="," close=")">
+            #{optionId}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,10 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">关于App</view></cu-custom>
+<view class='margin-xl bg-white padding-xl radius shadow-lg'>
+  <view class='text-center margin-bottom text-lg  text-grey'>关于问答AI小助手</view>
+  <view class='text-content'>
+    <view>Hi！欢迎使用问答AI小助手！</view>
+    <view class='margin-top-sm'>该项目是我个人开发的一款智能聊天机器人程序。项目为上线初期阶段，仅提供免费的聊天对话模式，后续将引入图片智能处理，算法解析等对话模式。如果你有一些好的想法可以通过微信（VX：ben_wq）与我沟通，我会根据情况加入到后续的开发任务中。</view>
+    <view class='margin-top-sm'>如果这个项目有帮到你，或者你觉得很赞，可以分享给你的朋友们，支持一下！</view>
+    <view class='margin-top-sm'>💪💪💪更多功能敬请期待！</view>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "i-message": "../../../components/message/index"
+  }
+}

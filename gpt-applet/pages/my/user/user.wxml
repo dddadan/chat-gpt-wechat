@@ -1,0 +1,31 @@
+<!--pages/user/user.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">修改资料</view>
+</cu-custom>
+<i-message id="message" />
+<form>
+  <view class="cu-form-group margin-top">
+    <view class="title">头像</view>
+    <view><button open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" class="bg-white avatarBtn">
+      <image class="cu-avatar radius bg-gray" src="{{userInfo.avatarUrl}}"></image>
+      </button></view>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">昵称</view>
+    <input value="{{userInfo.nickName}}" placeholder="请输入昵称" bindinput="nickNameInput" maxlength="15"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">性别</view>
+    <checkbox class="round blue" value="1" bindtap="selectGender" data-gender="1" checked="{{userInfo.gender == 1}}"></checkbox><text bindtap="selectGender" data-gender="1">男</text>
+    <checkbox class="round blue" radio value="2" bindtap="selectGender" data-gender="2" checked="{{userInfo.gender == 2}}"></checkbox><text bindtap="selectGender" data-gender="2">女</text>
+    <checkbox class="round blue" radio value="0" bindtap="selectGender" data-gender="0" checked="{{!userInfo.gender || userInfo.gender == 0}}"></checkbox><text bindtap="selectGender" data-gender="0">保密</text>
+  </view>
+  <view class="cu-form-group margin-top align-start">
+    <view class="title">个性签名</view>
+    <textarea value="{{userInfo.remark}}" maxlength="100" bindinput="textareaBInput" placeholder="请输入个性签名"></textarea>
+  </view>
+  <view class="margin-top">
+    <view style="text-align: center;"><button class="cu-btn bg-gradual-blue" bindtap="submit" disabled="{{submitFlag}}">确 认</button></view>
+  </view>
+</form>

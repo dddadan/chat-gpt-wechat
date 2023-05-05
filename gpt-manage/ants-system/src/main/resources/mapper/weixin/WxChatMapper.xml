@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ants.weixin.mapper.WxChatMapper">
+    
+    <resultMap type="WxChat" id="WxChatResult">
+        <result property="id"    column="id"    />
+        <result property="openid"    column="openid"    />
+        <result property="role"    column="role"    />
+        <result property="content"    column="content"    />
+        <result property="errorFlag"    column="error_flag"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWxChatVo">
+        select id, openid, role, content, error_flag, duration,create_time, create_by, update_time, update_by, remark from wx_chat
+    </sql>
+
+    <select id="selectWxChatList" parameterType="WxChat" resultMap="WxChatResult">
+        <include refid="selectWxChatVo"/>
+        <where>  
+            <if test="openid != null "> and openid = #{openid}</if>
+            <if test="role != null  and role != ''"> and role = #{role}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+            <if test="errorFlag != null "> and error_flag = #{errorFlag}</if>
+            <if test="params.beginCreateTime != null and params.beginCreateTime != '' and params.endCreateTime != null and params.endCreateTime != ''"> and create_time between #{params.beginCreateTime} and #{params.endCreateTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectWxChatById" parameterType="Long" resultMap="WxChatResult">
+        <include refid="selectWxChatVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectWxChatToWx" resultMap="WxChatResult">
+        <include refid="selectWxChatVo"/>
+        WHERE openid = #{openid}
+        ORDER BY create_time DESC limit #{limit};
+    </select>
+        
+    <insert id="insertWxChat" parameterType="WxChat" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into wx_chat
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="openid != null">openid,</if>
+            <if test="role != null">role,</if>
+            <if test="content != null">content,</if>
+            <if test="errorFlag != null">error_flag,</if>
+            <if test="duration != null">duration,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="remark != null">remark,</if>
+            create_time
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="openid != null">#{openid},</if>
+            <if test="role != null">#{role},</if>
+            <if test="content != null">#{content},</if>
+            <if test="errorFlag != null">#{errorFlag},</if>
+            <if test="duration != null">#{duration},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="remark != null">#{remark},</if>
+            NOW()
+         </trim>
+    </insert>
+
+    <update id="updateWxChat" parameterType="WxChat">
+        update wx_chat
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="openid != null">openid = #{openid},</if>
+            <if test="role != null">role = #{role},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="errorFlag != null">error_flag = #{errorFlag},</if>
+            <if test="duration != null">duration = #{duration},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteWxChatById" parameterType="Long">
+        delete from wx_chat where id = #{id}
+    </delete>
+
+    <delete id="deleteWxChatByIds" parameterType="String">
+        delete from wx_chat where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="queryChatCount" parameterType="String" resultType="int">
+        SELECT COUNT(1) FROM wx_chat WHERE openid = #{openid} AND role = 'user' AND error_flag IS NULL;
+    </select>
+
+    <select id="queryChatCountToday" parameterType="String" resultType="int">
+        SELECT COUNT(1) FROM wx_chat WHERE openid = #{openid} AND role = 'user' AND error_flag IS NULL AND TO_DAYS(create_time) = TO_DAYS(NOW())
+    </select>
+
+    <select id="queryChatStatus" parameterType="String" resultMap="WxChatResult">
+        SELECT * FROM wx_chat WHERE openid = #{openid} ORDER BY create_time desc limit 1;
+    </select>
+
+    <select id="queryErrorChats" resultMap="WxChatResult" >
+        SELECT a.* FROM wx_chat a
+        INNER JOIN wx_user b
+        ON a.openid = b.openid
+        WHERE a.create_time = (SELECT create_time FROM wx_chat WHERE openid = a.openid ORDER BY create_time DESC LIMIT 1)
+        AND a.role = 'user'
+        AND a.create_time &lt; DATE_ADD(NOW(), INTERVAL - 30 MINUTE)
+        ORDER BY a.id DESC limit 1;
+    </select>
+</mapper>

@@ -1,0 +1,65 @@
+<scroll-view scroll-y class="scrollPage">
+  <view class="UCenter-bg" bindtap="goUser" style="background-image: url({{backgroundImage}});">
+    <view class="cu-avatar round xl" style="{{'background-image:url(' + (userInfo.avatarUrl? userInfo.avatarUrl: (userInfo.gender == '2'?'https://www.antsclimb.com/profile/avatar/static/UserWoman.png':'https://www.antsclimb.com/profile/avatar/static/UserMan.png')) + ')'}}">
+      <view class="cu-tag badge bg-white">📸</view>
+    </view>
+
+    <view class="text-xl margin-top-lg">{{userInfo.nickName}}
+      <text class="text-df">{{userInfo.gender == '2'?' 👩':userInfo.gender == '1'?'🧑':' 🌈'}}</text>
+    </view>
+    <view class="margin-top-sm">
+      <text>{{userInfo.remark?userInfo.remark:'什么也没留下...'}}</text>
+    </view>
+    <image src="/assets/image/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+  </view>
+  <view class="padding flex text-center text-grey bg-white shadow-warp">
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-orange">{{count}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-comment"></text> 对话
+      </view>
+    </view>
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-blue"> - </view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-favorfill"></text> 积分
+      </view>
+    </view>
+    <view class="flex flex-sub flex-direction">
+      <view class="text-xxl text-green">VIP</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-vip"></text> 等级
+      </view>
+    </view>
+  </view>
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow" bindtap="goFeedback">
+      <button class="cu-btn content">
+        <text class="cuIcon-writefill text-orange"></text>
+        <text class="text-grey">意见反馈</text>
+      </button>
+    </view>
+    <view class="cu-item arrow" bindtap="goLog">
+      <button class="cu-btn content">
+        <text class="cuIcon-formfill text-green"></text>
+        <text class="text-grey">更新日志</text>
+      </button>
+    </view>
+    <view class="cu-item arrow" bindtap="goShare">
+      <button class="cu-btn content">
+        <text class="cuIcon-share text-blue"></text>
+        <text class="text-grey">分享</text>
+      </button>
+    </view>
+    <view class="cu-item arrow" bindtap="goAbout">
+      <button class="cu-btn content">
+        <text class="cuIcon-info text-olive"></text>
+        <text class="text-grey">关于App</text>
+      </button>
+    </view>
+  </view>
+  <view class="cu-tabbar-height"></view>
+</scroll-view>
+
+<i-share isCanDraw="{{isCanDraw}}" bind:initData="onClose" />
+<i-spin size="large" fix wx:if="{{pageLoading}}"></i-spin>

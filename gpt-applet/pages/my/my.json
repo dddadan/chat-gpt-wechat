@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-share": "../../components/share/share",
+    "i-spin": "../../components/spin/index"
+  }
+}

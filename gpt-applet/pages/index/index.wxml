@@ -1,0 +1,33 @@
+<view class="header" style="background-color: #3a9cff;">
+    <view class="light"></view>
+    <view class="user">GPT_d45as54fsd</view>
+    <view class="search">
+        <text class="cuIcon-search"></text>
+        <input class="search-input" placeholder-class="placeholder" type="text" placeholder="搜索" confirm-type="search"  bindinput="inputSearch" bindfocus="focusSearch" bindblur="blurSearch" value="{{search}}"></input>
+        <text class="cuIcon-close" wx:if="{{close}}" bindtap="closeSearch"></text>
+    </view>
+</view>
+
+<view class="body">
+  <view class="cu-list menu-avatar">
+    <view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{chatList}}" wx:for-item="item" wx:key bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}" data-onLine="{{item.onLine}}">
+      <view class="cu-avatar lg" style="background-image:url({{item.image}});" bindtap="goChat" data-index="{{index}}"></view>
+      <view class="content" bindtap="goChat" data-index="{{index}}">
+        <view class="text-grey">
+          <text class="text-cut">{{item.name}}</text>
+          <view class="cu-tag round bg-orange sm" wx:if="{{!item.onLine}}">即将开放</view>
+        </view>
+        <view class="text-gray text-sm flex">
+          <text class="text-cut">{{item.message}}</text>
+        </view>
+      </view>
+      <view class="action" style="width: 130rpx;" bindtap="goChat" data-index="{{index}}">
+        <view class="text-grey text-xs">{{item.time}}</view>
+        <view class="cu-tag round bg-grey sm" wx:if="{{item.num}}">{{item.num}}</view>
+      </view>
+      <view class="move">
+        <view class="bg-red">删除</view>
+      </view>
+    </view>
+  </view>
+</view>

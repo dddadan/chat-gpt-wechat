@@ -1,0 +1,18 @@
+/* pages/my/feedback/feedback.wxss */
+.feedback {
+  border: 1px solid #f0f0f0;
+}
+
+.feedback-title {
+  padding: 35rpx 28rpx 28rpx 28rpx;
+  font-size: 35rpx;
+}
+
+.feedback-content {
+  height: 500rpx;
+  line-height: 500rpx;
+}
+
+.cu-item {
+  border-bottom: 1px solid #f0f0f0;
+}

@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/chat/chat",
+    "pages/index/index",
+    "pages/my/my",
+    "pages/my/about/about",
+    "pages/my/feedback/feedback",
+    "pages/my/user/user",
+    "pages/my/log/log",
+    "components/pc/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "问答AI小助手",
+    "backgroundTextStyle": "light",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "tabBar": {
+    "color": "#BFBFBF",
+    "selectedColor": "#87DCF7",
+    "list": [
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "聊天",
+        "iconPath": "assets/image/index_0.png",
+        "selectedIconPath": "assets/image/index_1.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "assets/image/my_0.png",
+        "selectedIconPath": "assets/image/my_1.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

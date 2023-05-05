@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ants-admin" />
+        <module name="ants-common" />
+        <module name="ants-framework" />
+        <module name="ants-generator" />
+        <module name="ants-quartz" />
+        <module name="ants-system" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ants-admin" target="1.8" />
+      <module name="ants-common" target="1.8" />
+      <module name="ants-framework" target="1.8" />
+      <module name="ants-generator" target="1.8" />
+      <module name="ants-gpt-manage" target="1.8" />
+      <module name="ants-quartz" target="1.8" />
+      <module name="ants-system" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

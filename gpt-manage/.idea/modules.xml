@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ants-admin/ants-admin.iml" filepath="$PROJECT_DIR$/ants-admin/ants-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-common/ants-common.iml" filepath="$PROJECT_DIR$/ants-common/ants-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-framework/ants-framework.iml" filepath="$PROJECT_DIR$/ants-framework/ants-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-generator/ants-generator.iml" filepath="$PROJECT_DIR$/ants-generator/ants-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-gpt-manage.iml" filepath="$PROJECT_DIR$/ants-gpt-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-quartz/ants-quartz.iml" filepath="$PROJECT_DIR$/ants-quartz/ants-quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-system/ants-system.iml" filepath="$PROJECT_DIR$/ants-system/ants-system.iml" />
+    </modules>
+  </component>
+</project>

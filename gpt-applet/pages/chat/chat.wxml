@@ -1,0 +1,41 @@
+<cu-custom id="cu-custom" bgColor="bg-gradual-blue" wx:if="{{!pageLoading}}">
+  <!-- <view slot="backText">返回</view> -->
+  <view slot="content">问答AI小助手</view>
+</cu-custom>
+<i-message id="message" wx:if="{{!pcFlag}}"/>
+<view class="cu-chat" bindtouchstart="touchStart" wx:if="{{!pcFlag}}">
+  <view id="{{'cu-item' + talk.id}}" class="cu-item {{talk.role == 'user'?'self':''}}" wx:for="{{talkList}}" wx:for-item="talk" wx:for-index="index">
+    <view wx:if="{{talk.role != 'soliloquy' && (talk.role == 'assistant' ||talk.role == 'system')}}" class="cu-avatar radius" style="background-image:url(https://www.antsclimb.com/profile/avatar/static/AI3.png);"></view>
+    <view class="main" wx:if="{{talk.role != 'soliloquy'}}">
+      <view class="action text-grey" wx:if="{{talk.errorFlag}}">
+        <text class="cuIcon-warnfill text-red text-xxl"></text>
+      </view>
+      <view class="content {{talk.role == 'user'?'bg-gradual-blue':''}} shadow">
+        <text bindtap="copyBtn" data-content="{{talk.content}}">{{talk.content}}</text>
+      </view>
+    </view>
+    <view wx:if="{{talk.role != 'soliloquy' && talk.role == 'user' && userInfo.gender == 2}}" class="cu-avatar radius" style="{{'background-image:url('+ (userInfo.avatarUrl? userInfo.avatarUrl: 'https://www.antsclimb.com/profile/avatar/static/UserWoman.png') +')'}}"></view>
+    <view wx:if="{{talk.role != 'soliloquy' && talk.role == 'user' && userInfo.gender != 2}}" class="cu-avatar radius" style="{{'background-image:url('+ (userInfo.avatarUrl? userInfo.avatarUrl: 'https://www.antsclimb.com/profile/avatar/static/UserMan.png') +')'}}"></view>
+    <view class="date" wx:if="{{talk.role != 'soliloquy'}}">{{talk.createTime}}</view>
+    <view class="cu-info" wx:if="{{talk.role == 'soliloquy'}}" style="margin-top: 0; margin-bottom: 0;">
+      <text class="cuIcon-roundclosefill text-red "></text> {{talk.content}}
+    </view>
+  </view>
+  <view id="space" class="space"></view>
+</view>
+
+<view id="cu-bar" class="cu-bar foot input {{InputBottom!=0?'cur':''}}" wx:if="{{!pageLoading && !pcFlag}}">
+  <input class="solid-bottom" bindfocus="InputFocus" bindblur="InputBlur" adjust-position="{{true}}" focus="{{false}}" maxlength="300" cursor-spacing="10" style="height: 70rpx; line-height: 70rpx;" maxlength="200" disabled="{{loading}}" bindconfirm="sendMsg" bindinput="inputMsg" value="{{message}}"></input>
+  <button class="cu-btn bg-gradual-blue shadow foot-btn" style="width: 200rpx;" bindtap="sendMsg" disabled="{{loading}}" loading="{{loading}}">{{loading?'处理中':'发送'}}</button>
+</view>
+
+
+<i-spin size="large" fix wx:if="{{pageLoading}}"></i-spin>
+<i-share isCanDraw="{{isCanDraw}}" bind:initData="onClose" wx:if="{{!pcFlag}}"/>
+
+<movable-area class="movable-area" wx:if="{{!pageLoading && !pcFlag}}" >
+  <movable-view class="movable-view" direction="vertical" y="800rpx" x="99999" bindtap="share">
+    <image src="/assets/image/share.png" style="width: 80rpx; height: 80rpx;"></image>
+    <view class="share-text"><text>分享</text></view>
+  </movable-view>
+</movable-area>

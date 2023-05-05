@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ants.weixin.mapper.WxUserMapper">
+    
+    <resultMap type="WxUser" id="WxUserResult">
+        <result property="id"    column="id"    />
+        <result property="openid"    column="openid"    />
+        <result property="avatarUrl"    column="avatar_url"    />
+        <result property="nickName"    column="nick_name"    />
+        <result property="gender"    column="gender"    />
+        <result property="country"    column="country"    />
+        <result property="province"    column="province"    />
+        <result property="city"    column="city"    />
+        <result property="language"    column="language"    />
+        <result property="deleteFlag"    column="delete_flag"    />
+        <result property="disableFlag"    column="disable_flag"    />
+        <result property="lastLoginTime"    column="last_login_time"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWxUserVo">
+        select id, openid, avatar_url, nick_name, gender, country, province, city, language, delete_flag, disable_flag, last_login_time, create_by, create_time, update_by, update_time, remark from wx_user
+    </sql>
+
+    <select id="selectWxUserList" parameterType="WxUser" resultMap="WxUserResult">
+        <include refid="selectWxUserVo"/>
+        where 1=1
+            <if test="openid != null  and openid != ''"> and openid like concat('%', #{openid}, '%')</if>
+            <if test="nickName != null  and nickName != ''"> and nick_name like concat('%', #{nickName}, '%')</if>
+            <if test="gender != null "> and gender = #{gender}</if>
+            <if test="country != null  and country != ''"> and country like concat('%', #{country}, '%')</if>
+            <if test="province != null  and province != ''"> and province like concat('%', #{province}, '%')</if>
+            <if test="city != null  and city != ''"> and city like concat('%', #{city}, '%')</if>
+            <if test="language != null  and language != ''"> and language like concat('%', #{language}, '%')</if>
+            <if test="disableFlag != null "> and disable_flag = #{disableFlag}</if>
+            <if test="lastLoginTime != null "> and last_login_time = #{lastLoginTime}</if>
+             and delete_flag = 0
+    </select>
+
+    <select id="selectWxUserListGroupOpenid" parameterType="String" resultType="Integer">
+        SELECT COUNT(1) FROM wx_subject_study WHERE openid = #{openid};
+    </select>
+    
+    <select id="selectWxUserById" parameterType="Long" resultMap="WxUserResult">
+        <include refid="selectWxUserVo"/>
+        where id = #{id}
+        and delete_flag = 0
+    </select>
+        
+    <insert id="insertWxUser" parameterType="WxUser" useGeneratedKeys="true" keyProperty="id">
+        insert into wx_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="openid != null">openid,</if>
+            <if test="avatarUrl != null">avatar_url,</if>
+            <if test="nickName != null">nick_name,</if>
+            <if test="gender != null">gender,</if>
+            <if test="country != null">country,</if>
+            <if test="province != null">province,</if>
+            <if test="city != null">city,</if>
+            <if test="language != null">language,</if>
+            <if test="deleteFlag != null">delete_flag,</if>
+            <if test="disableFlag != null">disable_flag,</if>
+            <if test="lastLoginTime != null">last_login_time,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="openid != null">#{openid},</if>
+            <if test="avatarUrl != null">#{avatarUrl},</if>
+            <if test="nickName != null">#{nickName},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="country != null">#{country},</if>
+            <if test="province != null">#{province},</if>
+            <if test="city != null">#{city},</if>
+            <if test="language != null">#{language},</if>
+            <if test="deleteFlag != null">#{deleteFlag},</if>
+            <if test="disableFlag != null">#{disableFlag},</if>
+            <if test="lastLoginTime != null">#{lastLoginTime},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWxUser" parameterType="WxUser">
+        update wx_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="openid != null">openid = #{openid},</if>
+            <if test="avatarUrl != null">avatar_url = #{avatarUrl},</if>
+            <if test="nickName != null">nick_name = #{nickName},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="country != null">country = #{country},</if>
+            <if test="province != null">province = #{province},</if>
+            <if test="city != null">city = #{city},</if>
+            <if test="language != null">language = #{language},</if>
+            <if test="deleteFlag != null">delete_flag = #{deleteFlag},</if>
+            <if test="disableFlag != null">disable_flag = #{disableFlag},</if>
+            <if test="lastLoginTime != null">last_login_time = #{lastLoginTime},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <update id="updateWxUserByOpenid" parameterType="WxUser">
+        update wx_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="avatarUrl != null and avatarUrl != ''">avatar_url = #{avatarUrl},</if>
+            <if test="nickName != null and nickName != ''">nick_name = #{nickName},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="country != null and country != ''">country = #{country},</if>
+            <if test="province != null and province != ''">province = #{province},</if>
+            <if test="city != null and city != ''">city = #{city},</if>
+            <if test="language != null and language != ''">language = #{language},</if>
+            <if test="remark != null and remark != ''">remark = #{remark},</if>
+            last_login_time = NOW(),
+            update_time = NOW()
+        </trim>
+        where openid = #{openid}
+    </update>
+
+    <delete id="deleteWxUserById" parameterType="Long">
+        delete from wx_user where id = #{id}
+    </delete>
+
+    <delete id="deleteWxUserByIds" parameterType="String">
+        delete from wx_user where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="selectWxUserByOpenid" parameterType="String" resultMap="WxUserResult">
+        select * from wx_user where openid = #{openid} and delete_flag = 0;
+    </select>
+
+</mapper>

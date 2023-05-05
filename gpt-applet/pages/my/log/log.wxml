@@ -1,0 +1,82 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">更新日志</view></cu-custom>
+<view class="cu-timeline">
+  <view class="cu-item text-blue">
+    <view class="bg-gradual-blue content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-blue">v0.0.6</view>
+        <view class="cu-tag line-white">2023/03/28</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.更新意见反馈，可以记录用户联系方式</view>
+        <view>2.修复消息发送失败场景下的聊天卡死</view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-blue">
+    <view class="bg-gradual-blue content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-blue">v0.0.5</view>
+        <view class="cu-tag line-white">2023/03/23</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.更新WebSocket协议聊天，防止聊天卡死</view>
+        <view>2.优化接口调用时长，降低接口回复等待时间</view>
+        <view>3.初始化页面加载状态下的页面展示</view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-blue">
+    <view class="bg-gradual-blue content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-blue">v0.0.4</view>
+        <view class="cu-tag line-white">2023/03/14</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.修复首次加入小程序获取信息loding问题</view>
+        <view>2.修复首次加入小程序对话卡顿问题</view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-blue">
+    <view class="bg-gradual-blue content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-blue">v0.0.3</view>
+        <view class="cu-tag line-white">2023/03/13</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.新增 “ 聊天 ” 和 “ 我的 ” TabBar</view>
+        <view>2.新增对话框一键分享功能</view>
+        <view>3.新增个人资料修改</view>
+        <view>4.新增 “ 意见反馈 ” ，“ 更新日志 ” ，“ 分享 ” ，“ 关于App ” 功能</view>
+        <view>5.优化对话试图初始化展示不完整的bug</view>
+        <view>6.调整整体UI趋于统一</view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-blue">
+    <view class="bg-gradual-blue content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-blue">v0.0.2</view>
+        <view class="cu-tag line-white">2023/03/10</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.更新对话联想模式，支持多次对话</view>
+        <view>2.优化聊天框UI</view>
+        <view>3.新增聊天复制功能</view>
+        <view>4.优化输入框展示问题</view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-blue">
+    <view class="bg-gradual-blue content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-blue">v0.0.1</view>
+        <view class="cu-tag line-white">2023/03/09</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>问答AI小助手0.0.1版本上线</view>
+        <view>1.上线问答AI小助手3体验版对话模型</view>
+      </view>
+    </view>
+  </view>
+</view>
