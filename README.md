@@ -20,7 +20,7 @@
 
 <br />
 
-<img src="./gpt-ui/src/assets/screenshot/扫码_1.png" alt="扫码_1" width="200"/>
+<img src="https://github.com/dddadan/chat-gpt-wechat/blob/main/gpt-ui/src/assets/screenshot/%E6%89%AB%E7%A0%81_1.png" alt="扫码_1" width="200"/>
 
 <br />
 
@@ -31,9 +31,9 @@
 
 <table>
     <tr>
-        <td ><img src="./gpt-ui/src/assets/screenshot/微信_1.png" alt="微信_1" width="500px"/></td>
-        <td><img src="./gpt-ui/src/assets/screenshot/微信_2.png" alt="微信_2"  width="500px"/></td>
-        <td><img src="./gpt-ui/src/assets/screenshot/微信_3.png" alt="微信_3"  width="500px"/></td>
+        <td ><img src="https://github.com/dddadan/chat-gpt-wechat/blob/main/gpt-ui/src/assets/screenshot/%E5%BE%AE%E4%BF%A1_1.png" alt="微信_1" width="500px"/></td>
+        <td><img src="https://github.com/dddadan/chat-gpt-wechat/blob/main/gpt-ui/src/assets/screenshot/%E5%BE%AE%E4%BF%A1_2.png" alt="微信_2"  width="500px"/></td>
+        <td><img src="https://github.com/dddadan/chat-gpt-wechat/blob/main/gpt-ui/src/assets/screenshot/%E5%BE%AE%E4%BF%A1_3.png" alt="微信_3"  width="500px"/></td>
     </tr>
 </table>
 
@@ -186,8 +186,8 @@ http {
 <br />
 <table>
     <tr>
-        <td ><img src="./gpt-ui/src/assets/screenshot/微信_4.jpg" alt="截图_4" width="500px"/></td>
-        <td><img src="./gpt-ui/src/assets/screenshot/微信_5.jpg" alt="微信_5"  width="500px"/></td>
-        <td><img src="./gpt-ui/src/assets/screenshot/微信_6.jpg" alt="微信_6"  width="500px"/></td>
+        <td ><img src="https://github.com/dddadan/chat-gpt-wechat/blob/main/gpt-ui/src/assets/screenshot/%E5%BE%AE%E4%BF%A1_4.jpg" alt="截图_4" width="500px"/></td>
+        <td><img src="https://github.com/dddadan/chat-gpt-wechat/blob/main/gpt-ui/src/assets/screenshot/%E5%BE%AE%E4%BF%A1_5.jpg" alt="微信_5"  width="500px"/></td>
+        <td><img src="https://github.com/dddadan/chat-gpt-wechat/blob/main/gpt-ui/src/assets/screenshot/%E5%BE%AE%E4%BF%A1_6.jpg" alt="微信_6"  width="500px"/></td>
     </tr>
 </table>
