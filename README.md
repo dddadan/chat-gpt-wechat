@@ -20,7 +20,7 @@
 
 <br />
 
-<img src="./gpt-ui/src/assets/screenshot/扫码_1.png" alt="扫码_1" width="200"/>
+<img src="https://www.antsclimb.com/profile/avatar/static/github/扫码_1.png" alt="扫码_1" width="200"/>
 
 <br />
 
@@ -31,9 +31,9 @@
 
 <table>
     <tr>
-        <td ><img src="./gpt-ui/src/assets/screenshot/微信_1.png" alt="微信_1" width="500px"/></td>
-        <td><img src="./gpt-ui/src/assets/screenshot/微信_2.png" alt="微信_2"  width="500px"/></td>
-        <td><img src="./gpt-ui/src/assets/screenshot/微信_3.png" alt="微信_3"  width="500px"/></td>
+        <td ><img src="https://www.antsclimb.com/profile/avatar/static/github/微信_1.png" alt="微信_1" width="500px"/></td>
+        <td><img src="https://www.antsclimb.com/profile/avatar/static/github/微信_2.png" alt="微信_2"  width="500px"/></td>
+        <td><img src="https://www.antsclimb.com/profile/avatar/static/github/微信_3.png" alt="微信_3"  width="500px"/></td>
     </tr>
 </table>
 
@@ -186,8 +186,8 @@ http {
 <br />
 <table>
     <tr>
-        <td ><img src="./gpt-ui/src/assets/screenshot/微信_4.jpg" alt="截图_4" width="500px"/></td>
-        <td><img src="./gpt-ui/src/assets/screenshot/微信_5.jpg" alt="微信_5"  width="500px"/></td>
-        <td><img src="./gpt-ui/src/assets/screenshot/微信_6.jpg" alt="微信_6"  width="500px"/></td>
+        <td ><img src="https://www.antsclimb.com/profile/avatar/static/github/微信_4.jpg" alt="截图_4" width="500px"/></td>
+        <td><img src="https://www.antsclimb.com/profile/avatar/static/github/微信_5.jpg" alt="微信_5"  width="500px"/></td>
+        <td><img src="https://www.antsclimb.com/profile/avatar/static/github/微信_6.jpg" alt="微信_6"  width="500px"/></td>
     </tr>
 </table>
